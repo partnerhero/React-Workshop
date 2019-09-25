@@ -8,7 +8,7 @@ const App = () => {
     return (
         <div className='container'>
             <div className='centered'>
-                {/* <ColorSelector/> */}
+                <ColorSelector/>
                 <BasicForm />
             </div>
         </div>

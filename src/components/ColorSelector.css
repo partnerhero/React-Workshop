@@ -1,0 +1,10 @@
+.ColorSelector {
+    display: flex;
+    flex-direction: column;
+}
+
+.ColorDisplay {
+    height: 100px;
+    width: 100px;
+    /* background-color: rgb(100, 1, 1); */
+}

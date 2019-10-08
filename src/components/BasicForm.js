@@ -1,4 +1,19 @@
 import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import {
+  Button,
+  Container,
+  Checkbox,
+  RadioGroup,
+  FormGroup,
+  FormHelperText,
+  FormControlLabel,
+  FormControl,
+  FormLabel,
+  TextField,
+  Typography,
+  Grid
+} from "@material-ui/core";
 
 export default function BasicForm() {
   const [formData, setFormData] = React.useState({
@@ -18,35 +33,51 @@ export default function BasicForm() {
   };
 
   return (
-    <div>
-      <h3>My Basic Form</h3>
-      <br />
+    <Container>
+      <Grid container spacing={3}>
+        <Grid container item xs={12} justify="center">
+          <Typography variant="h5">Login</Typography>
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <TextField
+            style={{ width: "100%" }}
+            label="Email"
+            id="email"
+            type="email"
+            onChange={e => formChange("email", e.target.value)}
+          />
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <TextField
+            style={{ width: "100%" }}
+            label="Password"
+            id="password"
+            type="password"
+            onChange={e => formChange("password", e.target.value)}
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <FormGroup row>
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={formData.rememberMe}
+                  onChange={() =>
+                    formChange("rememberMe", !formData.rememberMe)
+                  }
+                />
+              }
+              label="Remember Me?"
+            />
+          </FormGroup>
+        </Grid>
 
-      <h6>Email</h6>
-      <input
-        type="text"
-        onChange={e => formChange("email", e.target.value)}
-        value={formData.email}
-      />
-
-      <h6>Password</h6>
-      <input
-        type="password"
-        onChange={e => formChange("password", e.target.value)}
-        value={formData.password}
-      />
-      <br />
-
-      <label htmlFor="remember">Remember Me</label>
-      <input
-        type="checkbox"
-        name="remember"
-        onChange={e => formChange("rememberMe", !formData.rememberMe)}
-        checked={formData.rememberMe}
-      />
-
-      <br />
-      <input type="submit" value="Submit" onClick={onSubmit} />
-    </div>
+        <Grid container item xs={12} justify="flex-end">
+          <Button variant="contained" type="submit" onClick={onSubmit}>
+            Submit
+          </Button>
+        </Grid>
+      </Grid>
+    </Container>
   );
 }
